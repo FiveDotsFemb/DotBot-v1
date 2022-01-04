@@ -1,7 +1,6 @@
 const Discord = require("discord.js")
 require("dotenv").config()
 
-const TOKEN = "OTI3Nzc0NDk4NTA4MzkwNDkw.YdPHVQ.GA4K_bMFNYPQYuFGhCQr4F_E034"
 const PREFIX = "dot!"
 
 const client = new Discord.Client({
