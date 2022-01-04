@@ -17,26 +17,37 @@ client.on("ready", () => {
     console.log(`Logged in as ${client.user.tag}`)
 })
 
-client.on('message', msg => {
+// prefix
+client.on('message', async (msg) => {
     if (!msg.content.startsWith(PREFIX)) return;
 
     const args = msg.content.slice(PREFIX.length).split(/ +/);
     const command = args.shift().toLowerCase();
 
-
+// avatar
     if (command === 'avatar') {
         const embed = new Discord.MessageEmbed()
             .setTitle('User Avatar')
-            .setColor('#0099ff')
-            .setThumbnail(msg.author.avatarURL())
+            .setColor('#FF33AC')
             .setImage(msg.author.avatarURL())
             .setTimestamp()
         msg.channel.send({embeds: [embed]});
             
     }
+// member count
+    if (command === 'members') {
+        msg.reply(`There are ${msg.guild.memberCount} members in this server`)
+    }
+
+// poll command
+    if (command === 'poll') {
+        let message = await msg.reply(args.join(' '));
+        await message.react('✅');
+        await message.react('❌');
+    }
 })
 
-const welcomeChannelId = "896513423863599116"
+const welcomeChannelId = (process.env.CHANNEL)
 
 client.on("guildMemberAdd", async (member) => {
     const img = await generateImage(member)
