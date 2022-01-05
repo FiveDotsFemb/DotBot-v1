@@ -1,12 +1,5 @@
 const Discord = require("discord.js");
 const { Client, Intents } = require('discord.js');
-const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
-require("dotenv").config()
-
-const generateImage = require("./generateImage")
-
-const PREFIX = "dot!"
-
 const client = new Discord.Client({
     intents: [
         "GUILDS",
@@ -14,6 +7,10 @@ const client = new Discord.Client({
         "GUILD_MEMBERS"
     ]
 })
+
+require("dotenv").config()
+const generateImage = require("./generateImage")
+const PREFIX = "dot!"
 
 client.on("ready", () => {
     console.log(`Logged in as ${client.user.tag}`)
