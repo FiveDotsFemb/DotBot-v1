@@ -17,7 +17,7 @@ client.on("ready", () => {
 })
 
 // prefix
-client.on('message', async (msg) => {
+client.on('messageCreate', async (msg) => {
     if (!msg.content.startsWith(PREFIX)) return;
 
     const args = msg.content.slice(PREFIX.length).split(/ +/);
